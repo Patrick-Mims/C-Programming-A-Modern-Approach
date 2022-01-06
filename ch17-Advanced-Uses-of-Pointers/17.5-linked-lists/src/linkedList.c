@@ -5,7 +5,6 @@
 #define INDEX 16
 
 /* Linked List */
-
 struct node
 {
   char name[INDEX];
@@ -13,24 +12,32 @@ struct node
   struct node *next;
 };
 
-/* insert a new node */
-struct node *createNode(struct node *list, int n)
+/* finish this function call */
+/*
+struct node *search(struct node *list)
 {
-    struct node *new_node = NULL;
 
-    if((new_node = malloc(sizeof(struct node))) == NULL)
-    {
-      exit(EXIT_FAILURE);
-    }
+}
+*/
 
-    new_node->partNum = n;
-    new_node->next = list;
+struct node *createnode(struct node *list, int number)
+{
+  struct node *new_node = NULL;
 
-    return new_node;
+  if((new_node = malloc(sizeof(struct node))) == NULL)
+  {
+    exit(EXIT_FAILURE);
+  }
+
+  new_node->partNum = number;
+  new_node->next = list;
+
+  return new_node;
 }
 
 int main(int argc, char **argv)
 {
+  int item = 0;
   struct node *head = NULL;
 
   if((head = malloc(sizeof(struct node))) == NULL)
@@ -38,7 +45,19 @@ int main(int argc, char **argv)
     exit(EXIT_FAILURE);
   }
 
-  head = createNode(head, 25);
+  printf("Create a list of integers\n");
+
+  do
+  {
+    scanf("%d", &item);
+
+    printf("Adding %d to the list...\n", item);
+
+    head = createnode(head, item);
+
+    printf("Added: %d\n", head->partNum);
+
+  } while(item != 0);
 
   return 0;
 }
