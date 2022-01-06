@@ -23,6 +23,26 @@ struct node *displaylist(struct node *list)
     }
 }
 
+struct node *searchlist(struct node *list, int partnumber)
+{
+    struct node *s = NULL;
+
+    if((s = malloc(sizeof(struct node))) == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    for(s = list; s != NULL; s = s->next)
+    {
+        if(s->partnumber == partnumber)
+        {
+            return s;
+        }
+    }
+
+    return NULL;
+}
+
 struct node *createnode(struct node *list, const char *part, const int number)
 {
   struct node *new_node = NULL;
@@ -59,7 +79,22 @@ int main(int argc, char **argv)
 
     if(item == 0)
     {
-        displaylist(head);
+      displaylist(head);
+      int j = 0;
+
+      do
+      {
+        printf("Search By Part Number: ");
+
+        scanf("%d", &item);
+
+        head = searchlist(head, item);
+
+        printf("\nFound Description: %s\n", head->description);
+
+        j = j + 1;
+
+      } while(j < 3);
     }
 
     printf("Part Description: ");
