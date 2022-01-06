@@ -7,20 +7,23 @@
 /* Linked List */
 struct node
 {
-  char name[INDEX];
-  int partNum;
+  char description[INDEX];
+  int partnumber;
   struct node *next;
 };
 
-/* finish this function call */
-/*
-struct node *search(struct node *list)
+struct node *displaylist(struct node *list)
 {
-
+    struct node *p;
+    printf("Catalog\n");
+    for(p = list; p != NULL; p = p->next)
+    {
+        printf("%s\n%d\n", p->description, p->partnumber);
+        printf("\n");
+    }
 }
-*/
 
-struct node *createnode(struct node *list, int number)
+struct node *createnode(struct node *list, const char *part, const int number)
 {
   struct node *new_node = NULL;
 
@@ -29,7 +32,9 @@ struct node *createnode(struct node *list, int number)
     exit(EXIT_FAILURE);
   }
 
-  new_node->partNum = number;
+  strcpy(new_node->description, part);
+
+  new_node->partnumber = number;
   new_node->next = list;
 
   return new_node;
@@ -37,7 +42,8 @@ struct node *createnode(struct node *list, int number)
 
 int main(int argc, char **argv)
 {
-  int item = 0;
+  char part[INDEX];
+  int count = 1, item = 0;
   struct node *head = NULL;
 
   if((head = malloc(sizeof(struct node))) == NULL)
@@ -45,18 +51,27 @@ int main(int argc, char **argv)
     exit(EXIT_FAILURE);
   }
 
-  printf("Create a list of integers\n");
-
   do
   {
+    printf("\n");
+    printf("Part Number [ 0 to quit ]: ");
     scanf("%d", &item);
 
-    printf("Adding %d to the list...\n", item);
+    if(item == 0)
+    {
+        displaylist(head);
+    }
 
-    head = createnode(head, item);
+    printf("Part Description: ");
+    scanf("%s", part);
 
-    printf("Added: %d\n", head->partNum);
+    head = createnode(head, part, item);
 
+    printf("\n");
+    printf("Catalog Entry %d \nPart Number: %d\nDescription: %s\n", count, head->partnumber, head->description);
+    printf("\n");
+
+    count = count + 1;
   } while(item != 0);
 
   return 0;
