@@ -43,7 +43,7 @@ struct node *searchlist(struct node *list, int partnumber)
     return NULL;
 }
 
-struct node *createnode(struct node *list, const char *part, const int number)
+struct node *create_node(struct node *list, const char *part, const int number)
 {
   struct node *new_node = NULL;
 
@@ -60,12 +60,31 @@ struct node *createnode(struct node *list, const char *part, const int number)
   return new_node;
 }
 
+struct node *add_node(struct node **list, char *part, int num)
+{
+    struct node *new_node = NULL;
+
+    if((new_node = malloc(sizeof(struct node))) == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    strcpy(new_node->description, part);
+    new_node->partnumber = num;
+
+    new_node->next = *list;
+    *list = new_node;
+}
+
 int main(int argc, char **argv)
 {
   char part[INDEX];
   int count = 1, item = 0;
+
+  // First node in the list
   struct node *head = NULL;
 
+  // Request space for one node
   if((head = malloc(sizeof(struct node))) == NULL)
   {
     exit(EXIT_FAILURE);
@@ -94,16 +113,17 @@ int main(int argc, char **argv)
 
         j = j + 1;
 
-      } while(j < 3);
+      } while(j < 5);
     }
 
     printf("Part Description: ");
     scanf("%s", part);
 
-    head = createnode(head, part, item);
+    add_node(&head, part, item);
+    printf("Part Description Entered after add_node: %s\n", (*head).description);
 
     printf("\n");
-    printf("Catalog Entry %d \nPart Number: %d\nDescription: %s\n", count, head->partnumber, head->description);
+    printf("Catalog Entry %d \nPart Number: %d\nDescription: %s\n", count, head->partnumber, (*head).description);
     printf("\n");
 
     count = count + 1;
