@@ -23,7 +23,7 @@ struct node *displaylist(struct node *list)
     }
 }
 
-struct node *searchlist(struct node *list, int partnumber)
+struct node *search_list(struct node *list, int partnumber)
 {
     struct node *s = NULL;
 
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
 
         scanf("%d", &item);
 
-        head = searchlist(head, item);
+        head = search_list(head, item);
 
         printf("\nFound Description: %s\n", head->description);
 
