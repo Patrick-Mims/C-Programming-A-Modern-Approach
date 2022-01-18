@@ -15,10 +15,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define SIZE 20
 
 struct node
 {
-  char *item;
+  char item[SIZE];
+  struct node *next;
 };
 
 struct node *my_malloc(struct node *list)
@@ -33,10 +37,14 @@ struct node *my_malloc(struct node *list)
 struct node *insert(struct node *list, char *str)
 {
   struct node *new_node = NULL;
+  new_node = my_malloc(new_node);
 
-  //new_node = my_malloc();
+  strcpy(new_node->item, str);
 
-  strcpy(new_node->item, str)
+  new_node->next = list;
+  list = new_node;
+
+  return new_node;
 }
 
 int main(int argc, char **argv)
@@ -45,9 +53,14 @@ int main(int argc, char **argv)
 
   head = my_malloc(head);
 
-  head->item = "hello";
+  strcpy(head->item, "hello");
 
   printf("%s\n", head->item);
+
+  struct node *new_node = NULL;
+  new_node = insert(head, "YouTube");
+
+  printf("%s\n", new_node->item);
 
   return 0;
 }
