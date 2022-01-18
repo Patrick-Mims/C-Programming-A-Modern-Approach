@@ -12,7 +12,35 @@
  * current position in the array.
  * */
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 100
+
 int main(int argc, char **argv)
 {
+  char ch, list[SIZE];
+  int count;
+
+  printf("Enter a message: ");
+
+  do
+  {
+    ch = getchar();
+    list[count] = ch;
+    count = count + 1;
+  } while(ch != '\n');
+
+  printf("\n");
+
+  printf("Reversed:");
+
+  for(int j = count; j >= 0; j--)
+  {
+    printf("%c", list[j]);
+  }
+
+  printf("\n");
+
   return 0;
 }
