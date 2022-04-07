@@ -39,21 +39,49 @@ struct node *insert_node(struct node **list, char *country)
   *list = new_node;
 }
 
+void temp_file(FILE *tmp)
+{
+  char temporary_file_name[20];
+  char buffer[20];
+
+  strncpy(temporary_file_name, "572-83-8355", sizeof(temporary_file_name));
+
+  /* star out the first three characters */
+  memset(temporary_file_name, '*', 3);
+
+  printf("SSN -> %s\n", temporary_file_name);
+
+  /*
+  char *filename;
+  tmp = mkstemp(filename);
+
+  printf("Creating a Temp File...\n");
+
+  if((tmp = tmpfile()) < 0)
+  {
+    printf("Error: temp is null");
+    exit(EXIT_FAILURE);
+  }
+  */
+}
+
 int main(int argc, char **argv)
 {
-  FILE *fp = NULL;
+  FILE *tmp;
+  FILE *fp;
   char buffer[200];
 
   struct node *head = NULL;
 
-  if((head = malloc(sizeof(struct node))) == NULL)
-  {
-    exit(EXIT_FAILURE);
-  }
-
   if((fp = fopen("codes.txt", "r")) == NULL) // open for reading only
   {
     printf("There has seem to been an error: File Not Found");
+    exit(EXIT_FAILURE);
+  }
+
+  if((head = malloc(sizeof(struct node))) == NULL)
+  {
+    printf("Error: malloc failed in allocating memory\n");
     exit(EXIT_FAILURE);
   }
 
@@ -66,6 +94,8 @@ int main(int argc, char **argv)
   fclose(fp);
 
   display(head);
+
+  temp_file(tmp);
 
   return 0;
 }
