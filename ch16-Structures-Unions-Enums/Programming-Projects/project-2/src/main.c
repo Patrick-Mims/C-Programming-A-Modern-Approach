@@ -28,9 +28,20 @@ int get_size_of_database()
   return (MAX_PARTS - number_of_parts);
 }
 
-void insert(struct database *db)
+/*
+ * This function reads a string and returns it.
+ * */
+char *get_part_name(char *str)
+{
+  scanf("%s", str);
+}
+
+void insert(struct database db[], size_t len)
 {
   int partNum, qty;
+  char str[100];
+
+  printf("Length-> %zu\n", len);
 
   nop = get_number_of_parts();
 
@@ -44,10 +55,6 @@ void insert(struct database *db)
   printf("Part Number: ");
   scanf("%d", &partNum);
 
-  /* This should be an array */
-  db->number = partNum;
-
-  /* while the size of the entry is smaller than the size of the DB */
   do
   {
     printf("Quantity: ");
@@ -56,10 +63,18 @@ void insert(struct database *db)
 
   set_number_of_parts(qty);
 
+  db[number_of_parts].number = partNum;
+
+  printf("db[number_of_parts].number: %d\n", db[number_of_parts].number);
+  printf("Enter part name: ");
+
+  get_part_name(str);
+
+  printf("STOP HERE->%s\n", str);
   printf("Number of Parts in inventory: %d\n", get_number_of_parts());
   printf("Available Capacity: %d\n", get_size_of_database());
   printf("\n");
-  printf("Recent part number: %d\n", db->number);
+  printf("Recent part number: %d\n", db[number_of_parts].number);
 
   if(get_size_of_database() == 0)
     exit(EXIT_FAILURE);
@@ -96,13 +111,7 @@ void init(void)
   char code;
   int cnt = 0;
 
-  struct database *db;
-
-  if((db = malloc(sizeof(struct database))) == NULL)
-  {
-    printf("There's no room\n");
-    exit(EXIT_FAILURE);
-  }
+  struct database db[20];
 
   do
   {
@@ -112,7 +121,7 @@ void init(void)
     {
       switch(code)
       {
-        case 'i':insert(db);
+        case 'i':insert(db, (sizeof(db) / sizeof(*db)));
                  break;
         case 'p':print();
                  break;
