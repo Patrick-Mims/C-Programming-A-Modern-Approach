@@ -6,7 +6,7 @@
 
 int main(void)
 {
-  init();
+  stack_init();
   is_empty();
 
   return 0;

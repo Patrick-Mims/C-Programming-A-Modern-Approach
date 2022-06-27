@@ -13,7 +13,7 @@ struct node
 
 typedef struct stack_type *Stack;
 
-void init();
+void stack_init();
 bool is_empty();
 int is_full();
 int push(int);
