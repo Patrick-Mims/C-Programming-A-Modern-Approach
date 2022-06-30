@@ -9,17 +9,36 @@ struct stack_type
   struct node *top;
 };
 
-struct node *head = NULL;
+//struct node *head = NULL;
 
-void stack_init()
+Stack create_stack()
 {
-  if((head = malloc(sizeof(struct node))) == NULL)
+  Stack st;
+
+  if((st = malloc(sizeof(struct stack_type))) == NULL)
     exit(EXIT_FAILURE);
+
+  st->top = 0;
+
+  return st;
 }
 
 bool is_empty(Stack s)
 {
   return s->top == NULL;
+}
+
+int pop(Stack p)
+{
+    printf("p->data\n");
+}
+
+void push(Stack st, int d)
+{
+  if(is_full())
+  {
+
+  }
 }
 
 /*

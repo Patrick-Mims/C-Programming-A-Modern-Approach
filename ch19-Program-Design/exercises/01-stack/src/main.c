@@ -6,8 +6,12 @@
 
 int main(void)
 {
-  stack_init();
-  is_empty();
+  Stack s1;
+  s1 = create_stack();
 
+  if(is_empty() == 0)
+    printf("\nIt's empty\n");
+
+    push(s1, 30);
   return 0;
 }

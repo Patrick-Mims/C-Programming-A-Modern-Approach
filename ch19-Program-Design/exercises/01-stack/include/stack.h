@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define INDEX 20
+#define INDEX 50
 
 typedef int type;
 
@@ -13,11 +13,13 @@ struct node
 
 typedef struct stack_type *Stack;
 
-void stack_init();
+Stack create_stack();
+Stack destroy_stack();
+
 bool is_empty();
 int is_full();
-int push(int);
-int pop();
+void push(Stack, int);
+int pop(Stack);
 void make_empty();
 
 #endif
