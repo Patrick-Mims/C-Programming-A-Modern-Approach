@@ -6,12 +6,17 @@
 
 int main(void)
 {
-  Stack s1;
-  s1 = create_stack();
+  type result = 0;
+  Stack item = create_stack();
 
-  if(is_empty() == 0)
-    printf("\nIt's empty\n");
+  if(is_empty(item) == 0)
+    printf("\nStack is empty\n");
 
-    push(s1, 30);
+  push(item, 30);
+
+  result = pop(item);
+
+  printf("Item popped off the stack-> %d\n", result);
+
   return 0;
 }

@@ -4,9 +4,12 @@
 
 #include "stack.h"
 
-struct stack_type
+#define INDEX 50
+
+struct stack_t
 {
-  struct node *top;
+  int contents[INDEX];
+  int top;
 };
 
 //struct node *head = NULL;
@@ -15,7 +18,7 @@ Stack create_stack()
 {
   Stack st;
 
-  if((st = malloc(sizeof(struct stack_type))) == NULL)
+  if((st = malloc(sizeof(struct stack_t))) == NULL)
     exit(EXIT_FAILURE);
 
   st->top = 0;
@@ -25,20 +28,32 @@ Stack create_stack()
 
 bool is_empty(Stack s)
 {
-  return s->top == NULL;
+  return s->top == 0;
 }
 
 int pop(Stack p)
 {
-    printf("p->data\n");
+  printf("p->data\n");
+  if(is_empty(p))
+    exit(EXIT_FAILURE);
+
+  return p->contents[--p->top];
 }
 
-void push(Stack st, int d)
+bool is_full(Stack f)
 {
-  if(is_full())
-  {
+  return f->top == INDEX;
+}
 
+void push(Stack st, int data)
+{
+  if(is_full(st))
+  {
+    printf("Stack is Full\n");
+    exit(EXIT_FAILURE);
   }
+
+  st->contents[st->top++] = data;
 }
 
 /*
