@@ -11,7 +11,7 @@ struct node
 
 struct node *create_node();
 struct node insert(struct node **, int);
-struct node display(struct node **);
+struct node display();
 struct node deleteNode(struct node **);
 
 #endif

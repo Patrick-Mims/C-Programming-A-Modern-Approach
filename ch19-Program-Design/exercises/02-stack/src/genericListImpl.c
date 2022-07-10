@@ -15,12 +15,15 @@ struct node *create_node()
   return n;
 }
 
-struct node display(struct node **list)
+struct node display()
 {
-  struct node *p = NULL;
+  printf("Display()\n");
+  /*
+  list_t p = NULL;
 
   for(p = *list; p != NULL; p = (*list)->nextptr)
   {
     printf("display -> %s\n", (*list)->data);
   }
+  */
 }

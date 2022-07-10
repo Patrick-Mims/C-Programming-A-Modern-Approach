@@ -17,7 +17,7 @@ stack_t new_stack()
   list_t l;
   stack_t s;
 
-  if((s = malloc(sizeof(stack_t))) ||
+  if((s = malloc(sizeof(stack_t))) &&
     (l = malloc(sizeof(list_t))) == NULL)
     exit(EXIT_FAILURE);
 
