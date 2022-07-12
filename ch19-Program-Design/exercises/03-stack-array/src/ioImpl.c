@@ -15,9 +15,9 @@ void init()
     exit(EXIT_FAILURE);
 
   while(fgets(item, 50, file))
-    insert(&head,item);
+    insertNode(&head,item);
 
-  display(head);
+  displayList(head);
 
   fclose(file);
 }

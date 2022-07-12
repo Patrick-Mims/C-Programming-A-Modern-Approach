@@ -10,7 +10,6 @@ int main(void)
 {
   Stack s1;
 
-  //struct node *head = NULL;
   struct node *item = createNode();
 
   strcpy(item->data, "patrickkevinmims@gmail.com");

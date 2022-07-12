@@ -14,15 +14,17 @@ struct node *createNode()
   return newNode;
 }
 
-void display(struct node *list)
+void displayList(struct node *list)
 {
+  int cnt = 1;
   for(; list != NULL; list = list->nextptr)
   {
-    printf("-> %s\n", list->data);
+    printf("%d. %s", cnt, list->data);
+    cnt = cnt + 1;
   }
 }
 
-void insert(struct node **list, char *address)
+void insertNode(struct node **list, char *address)
 {
   struct node *newNode = createNode();
 
@@ -31,4 +33,3 @@ void insert(struct node **list, char *address)
   newNode->nextptr = *list;
   *list = newNode;
 }
-

@@ -10,7 +10,7 @@ struct node
 };
 
 struct node *createNode();
-void display(struct node *);
-void insert(struct node **, char *);
+void displayList(struct node *);
+void insertNode(struct node **, char *);
 
 #endif
