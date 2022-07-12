@@ -24,6 +24,6 @@ void display(struct node *list)
 
   for(p = list; p != NULL; p = p->nextptr)
   {
-    printf("Display: %s\n", p->data);
+    printf("Display-> %s\n", p->data);
   }
 }

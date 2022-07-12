@@ -8,27 +8,29 @@ struct node *head = NULL;
 
 void init()
 {
+  int line_count = 0;
+  char line[40] = {0};
+  char *path = "Data.txt";
   char email[30];
-  FILE *fp;
 
   struct node *emails = createNode();
 
-  if(!(fp = fopen("Data.txt","r")))
+  FILE *file;
+  if((file = fopen(path, "r")) == NULL)
   {
-    fprintf(stderr, "could not read file\n");
+    perror(path);
     exit(EXIT_FAILURE);
   }
 
-  fscanf(fp,"%s",email);
+  while(fgets(line, 40, file))
+  {
+    printf("line[%06d]: %s\n", ++line_count, line);
+  }
 
-  strcpy(emails->data, email);
-
-  emails->nextptr = head;
-  head = emails;
 
   printf("value of email: %s\n", email);
 
   display(head);
 
-  fclose(fp);
+  fclose(file);
 }
