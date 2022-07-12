@@ -18,7 +18,7 @@ void display(struct node *list)
 {
   for(; list != NULL; list = list->nextptr)
   {
-    printf("Display-> %s\n", list->data);
+    printf("-> %s\n", list->data);
   }
 }
 
