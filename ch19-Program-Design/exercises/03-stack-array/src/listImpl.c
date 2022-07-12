@@ -1,29 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "emailList.h"
 
 struct node *createNode()
 {
-    struct node *newNode = NULL;
+  struct node *newNode = NULL;
 
-    if((newNode = malloc(sizeof(struct node))) == NULL)
-      exit(EXIT_FAILURE);
+  if((newNode = malloc(sizeof(struct node))) == NULL)
+    exit(EXIT_FAILURE);
 
-    /*
-    newNode->nextptr = head;
-    head = newNode;
-    */
-
-    return newNode;
+  return newNode;
 }
 
 void display(struct node *list)
 {
-  struct node *p = createNode();
-
-  for(p = list; p != NULL; p = p->nextptr)
+  for(; list != NULL; list = list->nextptr)
   {
-    printf("Display-> %s\n", p->data);
+    printf("Display-> %s\n", list->data);
   }
 }
+
+void insert(struct node **list, char *address)
+{
+  struct node *newNode = createNode();
+
+  strcpy(newNode->data, address);
+
+  newNode->nextptr = *list;
+  *list = newNode;
+}
+

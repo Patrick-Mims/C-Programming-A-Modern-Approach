@@ -11,5 +11,6 @@ struct node
 
 struct node *createNode();
 void display(struct node *);
+void insert(struct node **, char *);
 
 #endif
