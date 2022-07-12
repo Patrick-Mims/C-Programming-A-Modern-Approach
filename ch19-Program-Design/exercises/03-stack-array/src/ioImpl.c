@@ -13,7 +13,7 @@ void init()
 
   struct node *emails = createNode();
 
-  if(!(fp = fopen("emails.txt","r")))
+  if(!(fp = fopen("Data.txt","r")))
   {
     fprintf(stderr, "could not read file\n");
     exit(EXIT_FAILURE);
@@ -27,6 +27,8 @@ void init()
   head = emails;
 
   printf("value of email: %s\n", email);
+
+  display(head);
 
   fclose(fp);
 }

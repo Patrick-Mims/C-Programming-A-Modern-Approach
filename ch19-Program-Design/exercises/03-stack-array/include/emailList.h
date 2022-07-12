@@ -10,5 +10,6 @@ struct node
 };
 
 struct node *createNode();
+void display(struct node *);
 
 #endif

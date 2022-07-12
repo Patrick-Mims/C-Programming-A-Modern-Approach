@@ -17,3 +17,13 @@ struct node *createNode()
 
     return newNode;
 }
+
+void display(struct node *list)
+{
+  struct node *p = createNode();
+
+  for(p = list; p != NULL; p = p->nextptr)
+  {
+    printf("Display: %s\n", p->data);
+  }
+}
