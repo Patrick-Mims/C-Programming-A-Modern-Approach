@@ -5,10 +5,10 @@
 
 int main(void)
 {
+  /* create a new queue with a factory */
   Que que = createqueue(2);
 
-  printf("-> Queue\n");
-
+  /* add new values to the end of the queue */
   push(que, 1500);
   push(que, 3000);
 
