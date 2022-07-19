@@ -45,20 +45,27 @@ Type isEmpty(Que q)
   return q->top == 0;
 }
 
+void displayQueue(Que q)
+{
+  int i = 0;
+
+  for(; i <= 3; i++)
+    printf("Display Queue-> %d\n", q->contents[i]);
+}
+
 void push(Que q, Type item)
 {
-//  printf("-> isFull() - size: %d-%d\n", isFull(q), q->size);
-
   if(isFull(q))
   {
     printf("Queue is full, exiting...");
     exit(EXIT_FAILURE);
   }
 
-  q->top++;
-  q->contents[q->top] = item;
+  printf("Pushing -> %d\n", item);
 
- // printf("isFull-> %d q->top - q->size %d-%d\n", isFull(q), q->top, q->size);
+  q->contents[q->top++] = item;
+
+  printf("After Pushing -> %d\n", q->contents[q->top]);
 }
 
 int pop(Que q)
