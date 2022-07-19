@@ -17,8 +17,9 @@ Que createqueue(int size)
   if((q = malloc(sizeof(Que))) == NULL)
     exit(EXIT_FAILURE);
 
-  if((q->contents = malloc(size * sizeof(Type))) == NULL)
+  if((q->contents = calloc(size, sizeof(Type))) == NULL)
   {
+    printf("Cannot malloc for p->contents\n");
     destroyqueue(q);
     exit(EXIT_FAILURE);
   }
@@ -47,25 +48,25 @@ Type isEmpty(Que q)
 
 void displayQueue(Que q)
 {
-  int i = 0;
-
-  for(; i <= 3; i++)
+  for(int i = 0; i <= q->size; i++)
     printf("Display Queue-> %d\n", q->contents[i]);
 }
 
-void push(Que q, Type item)
+void push(Que q, Type i)
 {
+  printf("isFull()-> %d\n", isFull(q));
+
   if(isFull(q))
   {
     printf("Queue is full, exiting...");
     exit(EXIT_FAILURE);
   }
 
-  printf("Pushing -> %d\n", item);
+  printf("Pushing -> %d\n", i);
 
-  q->contents[q->top++] = item;
+  q->contents[q->top++] = i;
 
-  printf("After Pushing -> %d\n", q->contents[q->top]);
+  printf("top-> %d\n\n", q->top);
 }
 
 int pop(Que q)
