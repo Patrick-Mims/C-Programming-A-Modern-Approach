@@ -10,7 +10,7 @@ Que destroyqueue(Que);
 Type isFull(Que);
 Type isEmpty(Que);
 
-void display(Que);
+void displayQueue(Que);
 void insert(Que);
 void makeEmpty(Que);
 int pop(Que);
