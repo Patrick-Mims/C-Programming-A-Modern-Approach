@@ -15,7 +15,7 @@ int main(void)
 
   displayQueue(que);
 
-  // ghEvents();
+  ghEvents();
 
   return 0;
 }
