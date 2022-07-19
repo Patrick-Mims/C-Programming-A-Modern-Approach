@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "queue.h"
+#include "tools.h"
 
 int main(void)
 {
@@ -13,6 +14,8 @@ int main(void)
   push(que, 3000);
 
   printf("result: %d\n", pop(que));
+
+  ghEvents();
 
   return 0;
 }
