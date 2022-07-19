@@ -5,9 +5,9 @@
 
 struct Queue
 {
-  char *contents;
-  int top;
-  int size;
+  Type *contents;
+  Type top;
+  Type size;
 };
 
 Que createqueue(int size)
