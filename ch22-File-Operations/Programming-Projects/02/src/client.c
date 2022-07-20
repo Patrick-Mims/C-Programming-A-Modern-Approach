@@ -10,25 +10,33 @@
  * output of stdout
  * */
 
+void error()
+{
+  printf("Error: Not enough params\n");
+  printf("usage: ./client file\n");
+}
+
 int main(int argc, char **argv)
 {
-  int i = 0;
   FILE *file;
 
-    if((file = fopen(argv[1], "r")) == NULL)
-    {
-      printf("%s can't be opened\n", argv[i]);
-      exit(EXIT_FAILURE);
-    }
-
-  if((file = fopen("linux.txt", "r")) == NULL)
+  if(argc < 2)
   {
+    error();
+    exit(EXIT_FAILURE);
+  }
+
+  printf("file -> %s\n", argv[1]);
+
+  if((file = fopen(argv[argc - 1], "r")) == NULL)
+  {
+    printf("%s can't be opened\n", argv[i]);
     exit(EXIT_FAILURE);
   }
 
   freopen("file.txt", "w+", stdout);
 
-  printf("Testing Blackholes V3\n");
+  printf("File was opened successfully\n");
 
   fclose(file);
 
