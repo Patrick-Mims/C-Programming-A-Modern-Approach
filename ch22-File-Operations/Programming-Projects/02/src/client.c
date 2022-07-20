@@ -46,6 +46,8 @@ int main(int argc, char **argv)
   if(setvbuf(file, buffer, _IOFBF, index) < 0)
     printf("setvbuf error\n");
 
+  printf("Buffer-> %s\n", buffer);
+
   freopen("file.txt", "w+", stdout);
 
   printf("File was opened successfully\n");
