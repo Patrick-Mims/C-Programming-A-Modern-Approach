@@ -13,32 +13,13 @@
 int main(int argc, char **argv)
 {
   int i = 0;
-  FILE *fp;
+  FILE *file;
 
-  do {
-    printf("-> %s\n", argv[i]);
-
-    if((fp = fopen(argv[i], "r")) == NULL)
+    if((file = fopen(argv[1], "r")) == NULL)
     {
       printf("%s can't be opened\n", argv[i]);
       exit(EXIT_FAILURE);
     }
-
-    fclose(fp);
-
-    i = i + 1;
-  } while(i < argc);
-
-  printf("-> %s can be opened\n", argv[1]);
-
-  return 0;
-}
-
-int main(int argc, char **argv)
-{
-  FILE *file;
-
-
 
   if((file = fopen("linux.txt", "r")) == NULL)
   {
