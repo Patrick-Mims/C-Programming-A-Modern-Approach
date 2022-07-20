@@ -6,8 +6,8 @@
  *
  * (Characters other than letters shouldn't be changed.)
  *
- * The program shoudl obtain the file name from the command line and write its
- * output of stdout
+ * The program should obtain the file name from the command line and write its
+ * output to stdout
  * */
 
 void error()
@@ -18,6 +18,8 @@ void error()
 
 int main(int argc, char **argv)
 {
+  const int index = 50;
+  char *buffer;
   FILE *file;
 
   if(argc < 2)
@@ -28,11 +30,21 @@ int main(int argc, char **argv)
 
   printf("file -> %s\n", argv[1]);
 
-  if((file = fopen(argv[argc - 1], "r")) == NULL)
+  /* Dynamic Allocated Array */
+  if((buffer = calloc(index, sizeof(char))) == NULL)
   {
-    printf("%s can't be opened\n", argv[i]);
+    printf("Can't allocate memory for buffer - dynamic array\n");
     exit(EXIT_FAILURE);
   }
+
+  if((file = fopen(argv[argc - 1], "r")) == NULL)
+  {
+    printf("%s can't be opened\n", argv[argc - 1]);
+    exit(EXIT_FAILURE);
+  }
+
+  if(setvbuf(file, buffer, _IOFBF, index) < 0)
+    printf("setvbuf error\n");
 
   freopen("file.txt", "w+", stdout);
 
