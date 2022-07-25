@@ -3,8 +3,9 @@
 #include <curl/curl.h>
 
 #include "ccStack.h"
-/*
 #include "ccList.h"
+
+/*
 #include "emailList.h"
 #include "emailStack.h"
 */
@@ -12,6 +13,14 @@
 int main(int argc, char **argv)
 {
   CStack creditstack  = cc_stack_create(20);
+
+  struct node *head = NULL;
+
+  /* solve this incomplete type */
+  if((head = malloc(sizeof(struct node))) == NULL)
+    exit(EXIT_FAILURE);
+
+  insert(&head, 50);
 
   printf("Welcome to the Stack\n");
 
