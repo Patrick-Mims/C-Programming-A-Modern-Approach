@@ -25,7 +25,5 @@ int main(int argc, char **argv)
 
   cc_stack_display(creditstack);
 
-  sort_stack(10);
-
   return 0;
 }

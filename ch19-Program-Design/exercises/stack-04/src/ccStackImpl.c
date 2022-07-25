@@ -68,6 +68,8 @@ void cc_stack_display(CStack cs)
   {
     printf("contents: %d\n", cs->contents[i]);
   }
+
+  sort_stack(cs->top);
 }
 
 static void cc_stack_makeEmpty(CStack cs)
@@ -85,4 +87,24 @@ void cc_stack_push(CStack cs, Type item)
   cs->contents[cs->top] = item;
   cs->top++;
   printf("Item added to the stack-> %d\n", item);
+}
+
+static int sort_stack(int n)
+{
+  /* recursion is just a reverse "do while loop" */
+  CStack cs;
+
+  static int i = 0;
+
+  printf("\nPOP-> %d\n", cc_stack_pop(cs));
+
+  if(n <= 1)
+  {
+    printf("\n%d -> Final sort_stack\n", n);
+    return 1;
+  }
+
+  i = i + 1;
+
+  return n * sort_stack(n - 1);
 }

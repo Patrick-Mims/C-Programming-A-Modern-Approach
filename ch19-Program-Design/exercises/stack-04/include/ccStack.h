@@ -14,6 +14,6 @@ void cc_stack_display(CStack);
 static void cc_stack_makeEmpty(CStack);
 void cc_stack_push(CStack, Type);
 static int cc_stack_volume(CStack);
-int sort_stack(int);
+static int sort_stack(int);
 
 #endif
