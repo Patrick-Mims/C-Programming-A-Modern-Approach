@@ -13,14 +13,7 @@
 int main(int argc, char **argv)
 {
   CStack creditstack  = cc_stack_create(20);
-
-  struct node *head = NULL;
-
-  /* solve this incomplete type */
-  if((head = malloc(sizeof(struct node))) == NULL)
-    exit(EXIT_FAILURE);
-
-  insert(&head, 50);
+  CList head = createNode();
 
   printf("Welcome to the Stack\n");
 
@@ -33,6 +26,9 @@ int main(int argc, char **argv)
   cc_stack_push(creditstack, 7643);
 
   cc_stack_display(creditstack);
+
+  insert(&head, 50);
+  display(&head);
 
   return 0;
 }

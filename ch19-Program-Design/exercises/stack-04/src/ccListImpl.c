@@ -9,18 +9,19 @@ struct node
   struct node *nextptr;
 };
 
-struct node *createNode()
+CList createNode()
 {
-  struct node *newNode = NULL;
+  CList cl;
 
-  if((newNode = malloc(sizeof(struct node))) == NULL)
+  if((cl = malloc(sizeof(CList))) == NULL)
     exit(EXIT_FAILURE);
 
-  return newNode;
+  return cl;
 }
 
-void insert(struct node **list, Type item)
+void insert(struct node **list, int item)
 {
+  printf("Inserting...%d\n", item);
   struct node *newNode = NULL;
 
   if((newNode = malloc(sizeof(struct node))) == NULL)
@@ -30,4 +31,13 @@ void insert(struct node **list, Type item)
   newNode->nextptr = *list;
 
   *list = newNode;
+}
+
+void display(struct node **list)
+{
+  printf("Displaying List");
+  for(*list; *list != NULL; *list = (*list)->nextptr)
+  {
+    printf("(*list)->data %d\n", (*list)->data);
+  }
 }
